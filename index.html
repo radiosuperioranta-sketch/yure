@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broadcast Processor Pro | DSP Suite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-bar">
+            <div class="master-ctrl" id="ctrl-input">
+                <div class="ctrl-title">🎙️ AUDIO INPUT</div>
+                <div class="ctrl-row">
+                    <div class="mini-meters"><div class="mini-meter" id="m-in-l"></div><div class="mini-meter" id="m-in-r"></div></div>
+                    <div class="gain-wrap"><label>GAIN</label><input type="range" id="master-in-gain" min="-24" max="24" step="0.1" value="0"><span class="val" id="val-in-gain">0.0 dB</span></div>
+                    <button class="btn-mute" id="btn-mute-in">M</button>
+                </div>
+            </div>
+            <div class="toolbar">
+                <button id="btnSave">💾 Guardar</button>
+                <button id="btnLoad">📂 Cargar</button>
+                <button id="btnSettings">⚙️ Ajustes</button>
+            </div>
+            <button id="btnPower" class="btn-power" title="Encender/Apagar Sistema">⚡ OFF</button>
+        </header>
+        <main class="grid" id="grid"></main>
+        <footer class="bottom-bar">
+            <div class="spacer"></div>
+            <div class="master-ctrl" id="ctrl-output">
+                <div class="ctrl-title">🔊 AUDIO OUTPUT</div>
+                <div class="ctrl-row">
+                    <div class="gain-wrap"><label>LEVEL</label><input type="range" id="master-out-gain" min="-24" max="6" step="0.1" value="0"><span class="val" id="val-out-gain">0.0 dB</span></div>
+                    <button class="btn-mute" id="btn-mute-out">M</button>
+                    <div class="mini-meters"><div class="mini-meter" id="m-out-l"></div><div class="mini-meter" id="m-out-r"></div></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h3>⚙️ Configuración Global</h3><button id="btnCloseModal" class="modal-close">×</button></div>
+            <div class="modal-body">
+                <div class="setting-group"><label>🎙️ Entrada de Audio</label><select id="setAudioInput"><option value="">Detectando...</option></select></div>
+                <div class="setting-group"><label>🔊 Salida de Audio</label><select id="setAudioOutput"><option value="">Detectando...</option></select></div>
+                <div class="setting-group"><label>🎨 Tema Visual</label><select id="setTheme"><option value="dark">Oscuro</option><option value="light">Claro</option></select></div>
+                <div class="setting-group"><label>⏱️ Velocidad Medidores</label><select id="setMeterSpeed"><option value="0.8">Rápido</option><option value="0.35" selected>Normal</option><option value="0.1">Lento</option></select></div>
+                <div class="setting-group"><label>📉 Decaimiento Pico</label><select id="setPeakDecay"><option value="0.025">Rápido</option><option value="0.012" selected>Normal</option><option value="0.005">Lento</option></select></div>
+                <div class="setting-group"><label>🎯 Target LUFS</label><select id="setLufsTarget"><option value="-24">EBU</option><option value="-23" selected>Spotify</option><option value="-16">YouTube</option><option value="-14">TV</option></select></div>
+                <div class="setting-actions"><button id="btnResetPeaks">🔻 Reset Picos</button><button id="btnApplySettings">✅ Aplicar</button></div>
+            </div>
+        </div>
+    </div>
+    <div id="tooltip"></div>
+    <script src="app.js" defer></script>
+</body>
+</html>
